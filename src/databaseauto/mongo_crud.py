@@ -69,3 +69,13 @@ class mongo_operation:
         datajson=json.loads(dataframe.to_json(orient='record'))
         collection=self.create_collection()
         collection.insert_many(datajson)
+        
+    def find_data(self, collection_name: str = None):
+        collection = self.create_collection(collection_name)
+        result = [i for i in collection.find()]
+        return result
+
+    def delete_data(self, query: dict, collection_name: str = None):
+        collection = self.create_collection(collection_name)
+        result = collection.delete_many(query)
+        return result.deleted_count
