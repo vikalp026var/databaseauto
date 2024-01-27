@@ -46,4 +46,29 @@ In summary, setup.cfg is used by setuptools to configure the packaging and insta
 2. flake8(it is best because it containt 3 library pylint pycodestyle mccabe)
 3. pycodestyle
 
+# You can do insert,find,delete the query:
+
+
+ 
+# just give command -
+# call the mongodb connection 
+  client_url =  "mongodb+srv://<username>:<password>@cluster0.r31hq0n.mongodb.net/?retryWrites=true&w=majority"   
+# I have created a demo connection for you to understand. You can use your own.
+  database = "mynewdatabase"
+  collection_name = "myoldcolumn"
+
+# Make the object
+ mongo=mongoDBOperation(client_url,database,collection_name)
+
+# Insert the data into Mongodb 
+mongo.insert_record({"name":"Vikalp","designation":"data scientist","salary":"10k"},collection_name)
+
+#  find the data 
+mongo.find_data(collection_name)
+
+# delete the data 
+mongo.delete_data({"name":"Vikalp"},collection_name)
+
+
+
 
